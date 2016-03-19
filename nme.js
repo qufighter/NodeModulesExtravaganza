@@ -78,6 +78,14 @@ function op_store(){
 }
 
 function op_npm_cmd(){
+	if( installsMap[label] ){
+		console.log(' ERROR: selected label `'+label+'` already exists!');
+		process.exit(1);
+	}
+	if( label == curVersionMeta.name ){
+		console.log(' ERROR: selected label `'+label+'` matches the active label!');
+		process.exit(1);
+	}
 	if( installsMap[curVersionMeta.name] ){
 		console.log(' ERROR: currently installed version `'+curVersionMeta.name+'` exists twice! rename and save it, try `nme store ________`');
 		process.exit(1);
@@ -224,11 +232,11 @@ function beginNpmCmd(npmop){
 	var ls = spawn('npm', [npmop]);
 
 	ls.stdout.on('data', function(data){
-	  console.log(data);
+	  console.log(""+data);
 	});
 
 	ls.stderr.on('data', function(data){
-	  console.error(data);
+	  console.error(""+data);
 	});
 
 	ls.on('close', function(code){

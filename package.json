@@ -1,8 +1,11 @@
 {
   "name": "nme",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Node Modules Extravaganza - Allows you to easily switch between many node_modules installation folders.",
   "main": "nme.js",
+  "bin": {
+    "nme": "nme.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +20,9 @@
     "manager"
   ],
   "dependencies": {},
+  "devDependencies": {
+    "uglify-js": "^2.4.10"
+  },
   "author": "Sam Larison",
   "license": "GPL-3.0",
   "bugs": {
