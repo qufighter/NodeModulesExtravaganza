@@ -38,7 +38,7 @@ if your current install is un-named - a name will be generated in the format `un
 
 currently the only way to rename an installed version is to `store` it with a new name, then `use` the new name
 
-this can be useful if you run `npm install` and the current name no longer reflects teh current install state.
+this can be useful if you run `npm install` and the current name no longer reflects the current install state.
 
 instead you might use `nme install new-updates` to backup your current installation (if exists) and tag your new installation with a name
 

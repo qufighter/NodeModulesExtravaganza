@@ -209,8 +209,8 @@ function beginNmsOp(){
 }
 
 function lpad(num, digits){
-   var str = '000'+num; // caution: max zeros
-   return str.substr(str.length - digits);
+	var str = '000'+num; // caution: max zeros
+	return str.substr(str.length - digits);
 }
 
 function parseJson(d){
@@ -233,31 +233,23 @@ function readCurrentVersion(cbf){
 }
 
 function beginNpmCmd(npmop){
-	var ls = spawn('npm', [npmop]);
-
-	ls.stdout.on('data', function(data){
-	  console.log(""+data);
-	});
-
-	ls.stderr.on('data', function(data){
-	  console.error(""+data);
-	});
+	var ls = spawn('npm', [npmop], {stdio: 'inherit'});
 
 	ls.on('close', function(code){
-	  console.log('child process exited with code '+code);
-	  if( code === 0 ){
-	  	tagifyInstallation();
-	  }else{
-	  	// handle error?  revert? 
-	  	console.log('installation failed!  to go back to your previous version, you can use `nme use '+curVersionMeta.name+'`');
-	  }
+		console.log('child process exited with code '+code);
+		if( code === 0 ){
+			tagifyInstallation();
+		}else{
+			// handle error?  revert?
+			console.log('installation failed!  to go back to your previous version, you can use `nme use '+curVersionMeta.name+'`');
+		}
 	});
 }
 
 function tagifyInstallation(){
 	//todo: more metadata needed
 	fs.writeFile(npm_install_folder+'/'+metadata_filename, '{"name":"'+label+'"}', function(err){
-	  if (err) throw err;
-	  console.log('It\'s saved!');
+		if (err) throw err;
+		console.log('Installed version has been tagged with `'+label+'`!');
 	});
 }
