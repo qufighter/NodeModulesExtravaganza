@@ -1,4 +1,8 @@
+#! /usr/bin/env node
+// -*- js -*-
+
 "use strict";
+
 // node module extravaganza (switcher)
 
 var fs = require('fs');
@@ -245,7 +249,7 @@ function beginNpmCmd(npmop){
 	  	tagifyInstallation();
 	  }else{
 	  	// handle error?  revert? 
-	  	console.log('installation failed!  to go back to your previous version, you can use `nme use '+curVersionMeta.name+'`')
+	  	console.log('installation failed!  to go back to your previous version, you can use `nme use '+curVersionMeta.name+'`');
 	  }
 	});
 }
