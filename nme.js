@@ -104,8 +104,7 @@ var allowedCommands = { // should be "named" functions only
 	'use': op_use,
 	'store': op_store,
 	'save': op_store,
-	'install': op_npm_cmd,
-	'shrinkwrap': op_npm_cmd
+	'install': op_npm_cmd
 }
 
 var uniqueCommands = {};
