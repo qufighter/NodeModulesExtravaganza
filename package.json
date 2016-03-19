@@ -1,0 +1,25 @@
+{
+  "name": "nme",
+  "version": "1.0.3",
+  "description": "Node Modules Extravaganza - Allows you to easily switch between many node_modules installation folders.",
+  "main": "nme.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:qufighter/NodeModulesExtravaganza.git"
+  },
+  "keywords": [
+    "node_modules",
+    "folder",
+    "version",
+    "manager"
+  ],
+  "dependencies": {},
+  "author": "Sam Larison",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/qufighter/NodeModulesExtravaganza/issues"
+  }
+}
