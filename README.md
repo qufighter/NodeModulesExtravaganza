@@ -42,6 +42,16 @@ this can be useful if you run `npm install` and the current name no longer refle
 
 instead you might use `nme install new-updates` to backup your current installation (if exists) and tag your new installation with a name
 
+### Removing old versions
+
+`ls .nme` will show your old versions, and you may delete them the same way you would delete any other folder.
+
+`rm -fr .nme\old-version-name`
+
+### Performance notes
+
+Set your text editors to exclude `.nme` directory from searches and listings
+
 ### Reason For Existence
 
 Most of the time this shouldn't really be needed

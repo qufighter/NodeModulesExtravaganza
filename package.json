@@ -1,6 +1,6 @@
 {
   "name": "nme",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Node Modules Extravaganza - Allows you to easily switch between many node_modules installation folders.",
   "main": "nme.js",
   "scripts": {
