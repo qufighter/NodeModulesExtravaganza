@@ -21,7 +21,13 @@ if( process.argv.length > 4 ){
 	process.exit(1);
 }
 
-var installations = fs.readdirSync(storagePath);
+var installations = [];
+try{
+	installations = fs.readdirSync(storagePath);
+}catch(e){
+	console.log("The .nme folder didn't exist or list.  If this is your first run of nme from this location, hit the up arrow and try again.");
+	process.exit(1);
+}
 var install = '';
 var installsMap = {};
 var nextUnnamedVersion = 1, ver;
@@ -235,7 +241,7 @@ function beginNpmCmd(npmop){
 	var ls = spawn('npm', [npmop], {stdio: 'inherit'});
 
 	ls.on('close', function(code){
-		console.log('child process exited with code '+code);
+		console.log('child process `npm '+npmop+'` exited with code: '+code);
 		if( code === 0 ){
 			tagifyInstallation();
 		}else{
