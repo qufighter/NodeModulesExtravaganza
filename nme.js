@@ -184,11 +184,12 @@ function backupCurrentVersion(){
 	}else if( curVersionMeta.modulesDirectoryExists ){
 
 		if( curVersionMeta.default == true){ // all versions we store, we should tagify first, if they are either not currently tagged or have been renamed, we set .default to true
-			tagifyInstallation();
+			tagifyInstallation(curVersionMeta.name);
 		}
 
 		fs.rename(npm_install_folder, storagePath+curVersionMeta.name, function(err){
 			if (err) throw err;
+			console.log('current version '+curVersionMeta.name+' stored.  nme use to switch back.')
 			beginNmsOp();
 		});
 		
@@ -243,7 +244,7 @@ function beginNpmCmd(npmop){
 	ls.on('close', function(code){
 		console.log('child process `npm '+npmop+'` exited with code: '+code);
 		if( code === 0 ){
-			tagifyInstallation();
+			tagifyInstallation(label);
 		}else{
 			// handle error?  revert?
 			console.log('installation failed!  to go back to your previous version, you can use `nme use '+curVersionMeta.name+'`');
@@ -251,10 +252,10 @@ function beginNpmCmd(npmop){
 	});
 }
 
-function tagifyInstallation(){
+function tagifyInstallation(alabel){
 	//todo: more metadata needed
-	fs.writeFile(npm_install_folder+'/'+metadata_filename, '{"name":"'+label+'"}', function(err){
+	fs.writeFile(npm_install_folder+'/'+metadata_filename, '{"name":"'+alabel+'"}', function(err){
 		if (err) throw err;
-		console.log('Installed version has been tagged with `'+label+'`!');
+		console.log('Installed version has been tagged with `'+alabel+'`!');
 	});
 }
